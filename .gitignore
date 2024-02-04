@@ -1,0 +1,33 @@
+# .gitignore
+
+# Virtual environment
+venv/
+
+# Python bytecode
+__pycache__/
+
+# Logs
+*.log
+
+# Database
+db.sqlite3
+
+# Static files
+staticfiles/
+
+# Media files
+media/
+
+# Secret key
+*.key
+
+# Environment variables
+.env
+
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# macOS system files
+.DS_Store

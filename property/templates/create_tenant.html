@@ -1,0 +1,53 @@
+{% extends 'base page/base.html' %}
+
+{% block title %}Create Tenant{% endblock %}
+
+{% block content %}
+  {% load widget_tweaks %}
+  <div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="card col-md-8">
+      <div class="card-body">
+        <h2 class="text-center mb-4">Create Tenant</h2>
+        <form method="post" action="{% url 'create_tenant' %}">
+          {% csrf_token %}
+
+          <div class="row">
+            <!-- Tenant Form Fields -->
+            <div class="col-md-6 mb-3">
+              <label for="{{ tenant_form.name.id_for_label }}" class="form-label"><strong>Name</strong></label>
+              {% render_field tenant_form.name class="form-control" %}
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="{{ tenant_form.address.id_for_label }}" class="form-label"><strong>Address</strong></label>
+              {% render_field tenant_form.address class="form-control form-control-sm" %}
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="{{ tenant_form.document_proofs.id_for_label }}" class="form-label"><strong>Document Proofs</strong></label>
+              {% render_field tenant_form.document_proofs class="form-control form-control-sm" %}
+            </div>
+
+            <!-- Lease Form Fields -->
+            <div class="col-md-6 mb-3">
+              <label for="{{ lease_form.unit.id_for_label }}" class="form-label"><strong>Unit</strong></label>
+              {% render_field lease_form.unit class="form-control" %}
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="{{ lease_form.agreement_end_date.id_for_label }}" class="form-label"><strong>Agreement End Date</strong></label>
+              {% render_field lease_form.agreement_end_date class="form-control" %}
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="{{ lease_form.monthly_rent_date.id_for_label }}" class="form-label"><strong>Monthly Rent Date</strong></label>
+              {% render_field lease_form.monthly_rent_date class="form-control" %}
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mt-4">Create Tenant</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

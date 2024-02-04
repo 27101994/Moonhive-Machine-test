@@ -1,0 +1,41 @@
+{% extends 'base page/base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Property Profile</h2>
+    <h3>{{ property.name }}</h3>
+    <p><strong>Address:</strong> {{ property.address }}</p>
+    <p><strong>Location:</strong> {{ property.location }}</p>
+    <p><strong>Features:</strong> {{ property.features }}</p>
+
+    <div class="mt-4">
+      <h4>Units and Leases</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Unit Type</th>
+            <th>Rent Cost</th>
+            <th>Tenant Name</th>
+            <th>Agreement End Date</th>
+            <th>Monthly Rent Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for unit in units %}
+            <tr>
+              <td>{{ unit.bedroom_type }}</td>
+              <td>{{ unit.rent_cost }}</td>
+              {% for lease in leases %}
+                {% if lease.unit == unit %}
+                  <td>{{ lease.tenant.name }}</td>
+                  <td>{{ lease.agreement_end_date }}</td>
+                  <td>{{ lease.monthly_rent_date }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

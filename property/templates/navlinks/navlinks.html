@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand text-white" href="{% url 'admin_register' %}">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar navbar-expand-sm collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'property_listing' %}">Property Listing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'create_property' %}">Create Property</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'tenant_management' %}">Tenant Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'create_tenant' %}">Create Tenant</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'search' %}">Search</a>
+            </li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'admin_logout' %}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'admin_login' %}">Login</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

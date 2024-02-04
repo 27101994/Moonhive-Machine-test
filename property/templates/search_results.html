@@ -1,0 +1,25 @@
+{% extends 'base page/base.html' %}
+
+{% block content %}
+  <h2>Search Results for "{{ query }}"</h2>
+
+  <!-- Search Form -->
+  <form method="get" action="{% url 'search' %}">
+    <input type="text" name="q" placeholder="Enter your search query" value="{{ query }}">
+    <button type="submit">Search</button>
+  </form>
+
+  <h3>Properties:</h3>
+  <ul>
+    {% for property in properties %}
+      <li>{{ property.name }} - {{ property.address }} - {{ property.location }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Units:</h3>
+  <ul>
+    {% for unit in units %}
+      <li>{{ unit.property.name }} - {{ unit.bedroom_type }} - Rent: {{ unit.rent_cost }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

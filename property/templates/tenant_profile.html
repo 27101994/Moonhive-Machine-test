@@ -1,0 +1,19 @@
+{% extends 'base page/base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Tenant Profile</h2>
+    <h3>{{ tenant.name }}</h3>
+    <p>Address: {{ tenant.address }}</p>
+    <p>Document Proofs: {{ tenant.document_proofs }}</p>
+
+    <h4 class="mt-4">Leases</h4>
+    <ul class="list-group">
+      {% for lease in leases %}
+        <li class="list-group-item">
+          <strong>{{ lease.unit.property.name }}</strong> - {{ lease.unit.bedroom_type }} - Agreement End Date: {{ lease.agreement_end_date }} - Monthly Rent Date: {{ lease.monthly_rent_date }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

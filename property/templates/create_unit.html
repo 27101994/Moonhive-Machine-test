@@ -1,0 +1,31 @@
+{% extends 'base page/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="card col-md-6">
+      <div class="card-body">
+        <h2 class="text-center mb-4">Create Unit</h2>
+        <form method="post" action="{% url 'create_unit' property.id %}">
+          {% csrf_token %}
+
+          <!-- Property Fields (Hidden) -->
+          <input type="hidden" name="property" value="{{ property.id }}">
+
+          <div class="mb-3">
+            <label for="{{ form.rent_cost.id_for_label }}" class="form-label"><strong>Rent Cost</strong></label>
+            {{ form.rent_cost | add_class:'form-control' }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.bedroom_type.id_for_label }}" class="form-label"><strong>Bedroom Type</strong></label>
+            {{ form.bedroom_type | add_class:'form-control' }}
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mt-4">Create Unit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
